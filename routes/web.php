@@ -23,6 +23,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+// GUEST ROUTES POST index/show
+Route::resource('/posts', 'PostController');
+
+// ADMIN ROUTES POST CRUD
 Route::prefix('admin')
     ->namespace('Admin')
     ->middleware('auth')
