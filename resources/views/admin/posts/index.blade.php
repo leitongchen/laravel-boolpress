@@ -1,0 +1,24 @@
+@extends('layouts.app')
+
+@section('content')
+
+    <a href="{{ route('admin.posts.create') }}">New post</a>
+
+
+    {{-- <h1>Pagina index che contiene tutti i post</h1> --}}
+
+    @foreach($posts as $post)
+        <p>ID: {{ $post->id }}</p>
+
+        <h3> {{ $post->title }} </h3>
+        <p> {{ $post->content }} </p>
+
+        <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
+        @include('components.deleteBtn', compact($post->id))
+
+        <hr>
+
+    @endforeach
+
+
+@endsection
