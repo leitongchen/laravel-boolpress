@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <a href="{{ route('admin.posts.index') }}">Back to overview</a>
+
 
     <form action="{{ route('admin.posts.update', $post->id) }}" method="post">
         @csrf

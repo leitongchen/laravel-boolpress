@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('link-btn')
+    <a  class="nav-link" href="{{ route('posts.index') }}">Guest Mode</a>
+@endsection
+
+
 @section('content')
 
     <a href="{{ route('admin.posts.create') }}">New post</a>

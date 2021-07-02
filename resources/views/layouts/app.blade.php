@@ -66,7 +66,13 @@
                                     </form>
                                 </div>
                             </li>
+
+                            <li class="nav-item">
+                                @yield('link-btn')
+                            </li>
                         @endguest
+                        
+
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+
+@section('link-btn')
+    <a class="nav-link" href="{{ route('admin.posts.index') }}">Control Panel</a>
+@endsection
+
 @section('content')
 
     @foreach($posts as $post)
