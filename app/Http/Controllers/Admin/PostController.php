@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Traits\generateSlug;
 
 class PostController extends Controller
 {
@@ -29,6 +30,8 @@ class PostController extends Controller
      */
     public function create()
     {
+
+
         return view('admin.posts.create');
     }
 
@@ -43,13 +46,15 @@ class PostController extends Controller
         $newPostInput = $request->all(); 
 
         $newPost = new Post();
-        
         $newPost->fill($newPostInput);
-        $newPost->slug = $newPostInput['title'];
-        $newPost->save();
-        // dump($newPostInput);
 
-        return redirect()->route('admin.posts.show', $newPost->id);
+        // Creating SLUG
+        $slug = GenerateSlug::createSlug($newPost);
+
+        $newPost->slug = $slug;
+        $newPost->save();
+
+        return redirect()->route('admin.posts.show', $newPost->slug);
     }
 
     /**
@@ -58,13 +63,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($post)
+    public function show($slug)
     {
-        $post = Post::findOrFail($post);
+        $post = Post::where('slug', $slug)->first();
 
-        return view('admin.posts.show', [
-            'post' => $post,
-        ]);
+        if (!$post) {
+            abort(404);
+        }
+
+        $data = [
+            'post' => $post
+        ];
+
+        return view('admin.posts.show', $data);
     }
 
     /**
@@ -89,14 +100,27 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        $newInput = $request->all();
-        $post = Post::findOrFail($id);
+        $form_data = $request->all();
 
-        $post->update($newInput);
+        dump($form_data['title']);
+        dump($post->title);
 
-        return redirect()->route('admin.posts.show', $id);
+
+        if ($form_data['title'] != $post->title) {
+
+            $slug = GenerateSlug::createSlug($form_data);
+
+            $form_data['slug'] = $slug; 
+        }
+
+        $post->update($form_data);
+
+        dump($slug);
+
+
+        return redirect()->route('admin.posts.show', $slug);
     }
 
     /**

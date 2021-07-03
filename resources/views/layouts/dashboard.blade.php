@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+   
 </head>
 <body>
     <div id="app">
@@ -49,6 +50,9 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                @yield('link-btn')
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -67,14 +71,66 @@
                                 </div>
                             </li>
                         @endguest
+                            
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar py-4">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ route('admin.index') }}">
+                                    <i class="fas fa-home"></i>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.posts.index') }}">
+                                    <i class="far fa-newspaper"></i>
+                                    Posts
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                   <i class="fas fa-user-friends"></i>
+                                    Users
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                            {{-- href="{{ route('admin.categories.index') }} --}}
+                                <a class="nav-link" href="#">
+                                   <i class="fas fa-clipboard-list"></i>
+                                    Categories
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-tag"></i>
+                                    Tags
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <main class="py-4">
+                        @yield('content')
+                    </main>
+                </div>
+            </div>
+
+        </div>
+
+        
+
     </div>
 </body>
 </html>

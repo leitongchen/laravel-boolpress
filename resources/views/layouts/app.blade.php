@@ -49,6 +49,9 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                @yield('link-btn')
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -69,9 +72,7 @@
 
                         @endguest
                         
-                        <li class="nav-item">
-                            @yield('link-btn')
-                        </li>
+                       
 
                     </ul>
                 </div>

@@ -26,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // GUEST ROUTES POST index/show
 // Route::resource('/posts', 'PostController');
 Route::get('/posts', 'PostController@index')->name('posts.index');
-Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
 
 
 

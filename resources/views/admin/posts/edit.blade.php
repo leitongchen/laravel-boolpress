@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
 
@@ -16,7 +16,7 @@
         <textarea name="content" id="content" rows="10" cols="50"> {{ $post->content }} </textarea>
 
 
-        <input type="submit" value="Invia">
+        <input type="submit" value="Update">
 
     </form>
 

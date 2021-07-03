@@ -25,11 +25,21 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::where('slug', $slug)->first();
 
-        return view('posts.show', ['post'=>$post]);
+        // dump($slug);
+
+        if (!$post) {
+            abort(404);
+        }
+
+        $data = [
+            'post' => $post
+        ];
+
+        return view('posts.show', $data);
     }
 
 }

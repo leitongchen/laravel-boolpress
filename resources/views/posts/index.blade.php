@@ -16,7 +16,7 @@
 
         <p>{{ $post->slug }}</p>
 
-        <a href="{{ route('posts.show', $post->id) }}">More</a>
+        <a href="{{ route('posts.show', $post->slug) }}">More</a>
 
     @endforeach
 

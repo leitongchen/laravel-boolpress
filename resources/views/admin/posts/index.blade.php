@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('link-btn')
     <a  class="nav-link" href="{{ route('posts.index') }}">Guest Mode</a>
@@ -17,6 +17,8 @@
 
         <h3> {{ $post->title }} </h3>
         <p> {{ $post->content }} </p>
+
+        <a href="{{ route('admin.posts.show', $post->slug) }}">More</a>
 
         <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
         @include('components.deleteBtn', compact($post->id))
