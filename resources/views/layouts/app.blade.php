@@ -67,11 +67,11 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item">
-                                @yield('link-btn')
-                            </li>
                         @endguest
                         
+                        <li class="nav-item">
+                            @yield('link-btn')
+                        </li>
 
                     </ul>
                 </div>

@@ -24,7 +24,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // GUEST ROUTES POST index/show
-Route::resource('/posts', 'PostController');
+// Route::resource('/posts', 'PostController');
+Route::get('/posts', 'PostController@index')->name('posts.index');
+Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+
+
 
 // ADMIN ROUTES POST CRUD
 Route::prefix('admin')
@@ -32,7 +36,7 @@ Route::prefix('admin')
     ->middleware('auth')
     ->name('admin.')
     ->group(function() {
-        // Route::get('/', 'HomeController@index')->name('index');
+        Route::get('/', 'HomeController@index')->name('index');
 
         Route::resource('/posts', 'PostController');
     });
