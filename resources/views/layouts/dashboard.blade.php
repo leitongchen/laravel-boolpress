@@ -102,7 +102,7 @@
                             </li>
                             <li class="nav-item">
                             {{-- href="{{ route('admin.categories.index') }} --}}
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('admin.categories.index') }}">
                                    <i class="fas fa-clipboard-list"></i>
                                     Categories
                                 </a>
@@ -118,13 +118,17 @@
                     </div>
                 </nav>
             </div>
-
-            <div class="row">
-                <div class="col-md-10">
-                    <main class="py-4">
-                        @yield('content')
-                    </main>
+            
+            <div class="container">
+            
+                <div class="row">
+                    <div class="col-md-10">
+                        <main class="py-4">
+                            @yield('content')
+                        </main>
+                    </div>
                 </div>
+
             </div>
 
         </div>
