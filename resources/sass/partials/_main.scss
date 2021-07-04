@@ -1,5 +1,4 @@
 // SHOW POST
-
 .post-container {
 
     .head-box {
@@ -63,5 +62,37 @@
                 }
             }
         }
+    }
+}
+
+
+// FORM EDIT & CREATE 
+
+form {
+
+    .input_group {
+        margin-bottom: $spacing;
+    }
+
+    label {
+        font-weight: 900;
+        font-size: $font-size-base*1.1;
+    }
+
+    label, input {
+        display: block;
+    }
+    input.form-control, textarea, select {
+        width: 100%;
+    }
+
+    textarea {
+        height: 400px;
+
+        padding: $spacing/2;
+    }
+
+    .submit_btn {
+        font-size: $font-size-base*1.1;
     }
 }

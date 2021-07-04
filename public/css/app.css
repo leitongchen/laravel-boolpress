@@ -22950,7 +22950,7 @@ a.badge {
 }
 
 .cta_nav {
-  margin-bottom: 1.5rem;
+  margin: 20px 0;
 }
 
 .post-container .head-box {
@@ -23004,5 +23004,34 @@ a.badge {
 
 .post-container .info-box .info-text a:hover {
   text-decoration: underline;
+}
+
+form .input_group {
+  margin-bottom: 20px;
+}
+
+form label {
+  font-weight: 900;
+  font-size: 0.99rem;
+}
+
+form label,
+form input {
+  display: block;
+}
+
+form input.form-control,
+form textarea,
+form select {
+  width: 100%;
+}
+
+form textarea {
+  height: 400px;
+  padding: 10px;
+}
+
+form .submit_btn {
+  font-size: 0.99rem;
 }
 

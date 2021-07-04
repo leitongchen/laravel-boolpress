@@ -128,7 +128,7 @@
                 </nav>
 
                 <div class="col-md-10">
-                    <nav class="py-4">
+                    <nav class="cta_nav">
                         @yield('link-section')
                     </nav>
 
