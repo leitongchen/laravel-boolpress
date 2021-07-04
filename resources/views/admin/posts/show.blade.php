@@ -40,10 +40,14 @@
             </div>
 
         </div>  
+        
+        @if($post->src)
+            
+            <div class="img-box">
+                <img src="{{$post->src}}" alt="random image">
+            </div>
 
-        <div class="img-box">
-            <img src="{{$post->src}}" alt="random image">
-        </div>
+        @endif
 
         <div class="content-box">
         
