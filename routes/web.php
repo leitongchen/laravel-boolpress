@@ -40,3 +40,15 @@ Route::prefix('admin')
 
         Route::resource('/posts', 'PostController');
     });
+
+
+
+// ADMIN CATEGORIES ROUTES CRUD
+Route::prefix('admin')
+    ->namespace('Admin')
+    ->middleware('auth')
+    ->name('admin.')
+    ->group(function() {
+
+        Route::resource('/categories', 'CategoryController');
+    });

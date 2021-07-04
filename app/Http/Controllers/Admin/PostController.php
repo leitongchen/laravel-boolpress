@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 use App\Traits\generateSlug;
 
 class PostController extends Controller
@@ -16,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
 
         return view('admin.posts.index', [
             'posts' => $posts,
@@ -30,9 +31,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        $categoriesList = Category::all();
 
-
-        return view('admin.posts.create');
+        return view('admin.posts.create', ['categories' => $categoriesList]);
     }
 
     /**
@@ -46,7 +47,19 @@ class PostController extends Controller
         $newPostInput = $request->all(); 
 
         $newPost = new Post();
+
+        // dump($request->user());
+        // dump($request->user()->name);
+        // dump($request->user()->id);
+        // dump($request->user()->email);
+
         $newPost->fill($newPostInput);
+        $newPost->user_id = $request->user()->id;
+
+        // dump($request->category);
+        // return;
+
+        $newPost->category_id = $request->category; 
 
         // Creating SLUG
         $slug = GenerateSlug::createSlug($newPost);
@@ -87,9 +100,12 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id); 
+        $categoriesList = Category::all();
+
 
         return view('admin.posts.edit', [
             'post' => $post,
+            'categories' => $categoriesList
         ]);
     }
 
@@ -104,9 +120,9 @@ class PostController extends Controller
     {
         $form_data = $request->all();
 
-        dump($form_data['title']);
-        dump($post->title);
-
+        // dump($form_data);
+        // return;
+        // dump($post->title);
 
         if ($form_data['title'] != $post->title) {
 
@@ -114,13 +130,12 @@ class PostController extends Controller
 
             $form_data['slug'] = $slug; 
         }
-
+        
+        $post->category_id = $form_data['category']; 
         $post->update($form_data);
 
-        dump($slug);
 
-
-        return redirect()->route('admin.posts.show', $slug);
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**
