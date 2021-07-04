@@ -3,16 +3,21 @@
 namespace app\Traits;
 use Illuminate\Support\Str;
 use App\Post;
-
+use App\Category; 
 trait GenerateSlug 
 {
-    static public function createSlug($post) 
+    static public function createSlug($el) 
     {
-        if (is_array($post)) {
-            $slug =  Str::slug($post['title']);
-        } else {
-            $slug = Str::slug($post->title);
+        if (is_array($el)) {
+
+            $colName = $el['title'] ? 'title' : 'name';
+            $slug =  Str::slug($el[$colName]);
+
+        } else if (is_object($el)) {
+            $colName = $el->title ? 'title' : 'name';
+            $slug = Str::slug($el->$colName);
         }
+        
         $start_slug = $slug; 
 
         $slug_exist = Post::where('slug', $slug)->first();
@@ -28,4 +33,11 @@ trait GenerateSlug
         return $slug; 
 
     }
+
+    // static public function checkSlug($str) 
+    // {
+    //     $slug_exist = Category::where('slug', $str)->first();
+
+
+    // }
 }
