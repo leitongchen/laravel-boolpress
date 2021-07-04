@@ -35,6 +35,11 @@
             </div>
 
             <div class="input-group-lg input_group">
+                <label for="src">Paste your image src</label>
+                <input class="form-control" type="text" name="src" id="src" value="{{ $post->src }}">
+            </div>
+
+            <div class="input-group-lg input_group">
                 <label for="category">Choose a category</label>
                 <select class="form-control" name="category" id="category">
                     @foreach($categories as $category)

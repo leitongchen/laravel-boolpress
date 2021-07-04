@@ -7,7 +7,6 @@
     
         <a href="{{ route('admin.posts.index') }}">Back to overview</a>
         
-
     </div>
 
 @endsection
@@ -26,6 +25,11 @@
         <div class="input-group-lg input_group">
             <label for="content">Write here your post...</label>
             <textarea name="content" id="content" rows="10" cols="50"> </textarea>
+        </div>
+
+        <div class="input-group-lg input_group">
+            <label for="src">Paste your image src</label>
+            <input class="form-control" type="text" name="src" id="src">
         </div>
 
         <div class="input-group-lg input_group">
