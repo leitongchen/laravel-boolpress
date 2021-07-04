@@ -17,11 +17,18 @@
 
         <h3> {{ $post->title }} </h3>
         <p> {{ $post->content }} </p>
+        <p>Scritto da {{ $post->user->name }}</p>
+        <p>Categoria: {{ $post->category ? $post->category['name'] : "-"  }}</p>
 
         <a href="{{ route('admin.posts.show', $post->slug) }}">More</a>
 
         <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
-        @include('components.deleteBtn', compact($post->id))
+
+        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+            @include('components.deleteBtn')
+        </form>
+
+        
 
         <hr>
 

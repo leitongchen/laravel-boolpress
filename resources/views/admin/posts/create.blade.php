@@ -14,6 +14,13 @@
         <label for="content">Scrivi qui il tuo post</label>
         <textarea name="content" id="content" rows="10" cols="50"></textarea>
 
+        <label for="category">Categoria</label>
+        <select name="category" id="category">
+            @foreach($categories as $category)
+                <option value="{{$category->id}}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+
 
         <input type="submit" value="Invia">
 

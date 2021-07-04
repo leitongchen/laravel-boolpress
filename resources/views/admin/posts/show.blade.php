@@ -12,13 +12,18 @@
 
     <p>{{ $post->content }}</p>
 
-    <p>{{ $post->slug }}</p>
+    <p>Slug: {{ $post->slug }}</p>
+
+    <p>Scritto da {{ $post->user->name }}</p>
+
+    <p>Categoria: {{ $post->category ? $post->category['name'] : "-" }}</p>
+
+
 
     <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
-
-    
-
-    @include('components.deleteBtn')
+    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+        @include('components.deleteBtn')
+    </form>
 
 
 @endsection

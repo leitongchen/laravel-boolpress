@@ -15,12 +15,23 @@
         <label for="content">Scrivi qui il tuo post</label>
         <textarea name="content" id="content" rows="10" cols="50"> {{ $post->content }} </textarea>
 
+        <label for="category">Categoria</label>
+        <select name="category" id="category">
+            @foreach($categories as $category)
+                <option value="{{$category->id}}"
+                {{ $category->id == old('category_id', $post->category_id) ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
+            @endforeach
+        </select>
 
         <input type="submit" value="Update">
 
     </form>
 
-    @include('components.deleteBtn')
+    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+        @include('components.deleteBtn')
+    </form>
 
 
 @endsection
