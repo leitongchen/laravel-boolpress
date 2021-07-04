@@ -7,32 +7,50 @@
 
 @section('content')
 
-    <a href="{{ route('admin.posts.create') }}">New post</a>
 
 
     {{-- <h1>Pagina index che contiene tutti i post</h1> --}}
 
-    @foreach($posts as $post)
-        <p>ID: {{ $post->id }}</p>
+    <table class="table table-hover">
 
-        <h3> {{ $post->title }} </h3>
-        <p> {{ $post->content }} </p>
-        <p>Scritto da {{ $post->user->name }}</p>
-        <p>Categoria: {{ $post->category ? $post->category['name'] : "-"  }}</p>
-
-        <a href="{{ route('admin.posts.show', $post->slug) }}">More</a>
-
-        <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
-
-        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
-            @include('components.deleteBtn')
-        </form>
-
+        <thead class="thead-dark">
         
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Slug</th>
+                <th scope="col">Author</th>
+                <th scope="col">Category</th>
+                <th scope="col">Actions</th>
+            </tr>
 
-        <hr>
+        </thead>
+        <tbody>
+        
+            @foreach($posts as $post)
+                
+                <tr class="">
+                    <td>{{ $post->id }}</td>
+                    <td>{{ $post->title }}</td>
+                    <td>{{ $post->slug }}</td>
+                    <td>{{ $post->user->name }}</td>
+                    <td>{{ $post->category ? $post->category['name'] : "-" }}</td>
+                    <td class="cta-btn-box">
 
-    @endforeach
+                        @include('components.showMore')
+                        @include('components.editBtn')
+
+                        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+                            @include('components.deleteBtn')
+                        </form>
+                    </td>
+                </tr>
+
+            @endforeach
+
+        </tbody>
+        
+    </table>
 
 
 @endsection

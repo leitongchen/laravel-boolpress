@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ strtoupper(config('app.name', 'Boolpress')) }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -81,6 +81,15 @@
             <div class="row">
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar py-4">
                     <div class="sidebar-sticky">
+
+                        <ul class="nav flex-column cta_nav align-items-center">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.posts.create') }}" class="badge badge-primary nav-link">
+                                    New post
+                                </a>
+                            </li>
+                        </ul>
+
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link active" href="{{ route('admin.index') }}">
@@ -117,20 +126,18 @@
 
                     </div>
                 </nav>
-            </div>
-            
-            <div class="container">
-            
-                <div class="row">
-                    <div class="col-md-10">
-                        <main class="py-4">
-                            @yield('content')
-                        </main>
-                    </div>
+
+                <div class="col-md-10">
+                    <nav class="py-4">
+                        @yield('link-section')
+                    </nav>
+
+                    <main class="py-4">
+                        @yield('content')
+                    </main>
                 </div>
-
             </div>
-
+            
         </div>
 
         

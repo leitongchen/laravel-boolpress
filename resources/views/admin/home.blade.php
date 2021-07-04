@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header"><strong>{{ __('Dashboard') }}</strong></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,21 +14,25 @@
                         </div>
                     @endif
 
-                    {{ __('Benvenuto ' . ucwords(Auth::user()->name)) . '!'}}
+                    Welcome <strong> {{ __( ucwords(Auth::user()->name)) }}</strong>!
+                </div>
+
+                <div class="card-body">
+                   <a href="{{ route('admin.posts.index') }}">See your posts...</a>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+
+        {{-- <div class="col-md-8">
             <div class="card">
 
                 <div class="card-body">
                    <a href="{{ route('posts.index') }}">To the articles...</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
-</div>
+
+
 @endsection

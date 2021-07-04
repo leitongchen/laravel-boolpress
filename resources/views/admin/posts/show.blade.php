@@ -1,29 +1,84 @@
 @extends('layouts.dashboard')
 
-@section('content')
- 
-    <a href="{{ route('admin.posts.index') }}">Back to overview</a>
+@section('link-section')
+
+    <div class="d-flex justify-content-between">
     
+        <a href="{{ route('admin.posts.index') }}">Back to overview</a>
+        
+        <div class="cta-post d-flex">
+            @include('components.editBtn')
+            <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+                @include('components.deleteBtn')
+            </form>
+        </div>
 
-    {{-- <h1>Pagina show che mostra solo un unico post</h1> --}}
+    </div>
 
-    <p>{{ $post->id }}</p>
-    <h2>{{ $post->title }}</h2>
+@endsection
 
-    <p>{{ $post->content }}</p>
+@section('content')
 
-    <p>Slug: {{ $post->slug }}</p>
+    <div class="post-container">
+    
+        <h1>{{ $post->title }}</h1>
 
-    <p>Scritto da {{ $post->user->name }}</p>
+        <div class="head-box d-flex align-items-center">
 
-    <p>Categoria: {{ $post->category ? $post->category['name'] : "-" }}</p>
+            <div class="mr-5 tag">
+                ID:  
+                <span>
+                    <strong>{{ $post->id }}</strong>
+                </span>
+            </div>
 
+            <div class="slug-box flex-grow-1 d-flex align-items-center tag">
+                Slug: 
+                <span class="flex-grow-1">
+                    {{ $post->slug }}
+                </span>
+            </div>
 
+        </div>  
 
-    <a href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
-    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
-        @include('components.deleteBtn')
-    </form>
+        <div class="img-box">
+            <img src="{{$post->src}}" alt="random image">
+        </div>
 
+        <div class="content-box">
+        
+            <p>
+                {{ $post->content }}
+            </p>
+
+        </div>
+
+        <div class="info-box">
+
+            <div>
+                <h6>Author:</h6>
+                <div class="info-text">
+                    <a href="#">
+                    
+                        {{ $post->user->name }}
+
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h6>Category:</h6>
+                <div class="info-text">
+                    <a href="#">
+                    
+                        {{ $post->category ? $post->category['name'] : "-" }}
+                    
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 
 @endsection

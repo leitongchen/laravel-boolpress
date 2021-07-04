@@ -1,0 +1,24 @@
+// FONTS
+h6 {
+    font-size: $font-size-base;
+}
+
+
+
+// TABLE INDEX
+.table {
+    width: 100%;
+
+    tr {
+
+        td {
+            vertical-align: middle;
+        }
+    }
+
+    // cta btns on index table
+    .cta-btn-box {
+        display: flex;
+    }         
+}
+

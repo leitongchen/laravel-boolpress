@@ -3,7 +3,11 @@
     @csrf
     @method('DELETE')
 
-    <input type="submit" value="Delete">
+    <button type="submit" class="btn btn-danger" title="Delete">
+        <i class="far fa-trash-alt"></i>
+        
+    </button>
+    {{-- <input type="submit" value="Delete"> --}}
 
 
 {{-- </form> --}}
