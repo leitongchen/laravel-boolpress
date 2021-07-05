@@ -7,7 +7,12 @@
         <a href="{{ route('admin.posts.index') }}">Back to overview</a>
         
         <div class="cta-post d-flex">
-            @include('components.editBtn')
+
+            @include('components.editBtn', [
+                            'genericObj' => $post,
+                            'route' => 'admin.posts.edit',
+            ])
+
             <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
                 @include('components.deleteBtn')
             </form>

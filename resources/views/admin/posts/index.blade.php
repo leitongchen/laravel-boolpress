@@ -38,7 +38,10 @@
                     <td class="cta-btn-box">
 
                         @include('components.showMore')
-                        @include('components.editBtn')
+                        @include('components.editBtn', [
+                            'genericObj' => $post,
+                            'route' => 'admin.posts.edit',
+                        ])
 
                         <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
                             @include('components.deleteBtn')

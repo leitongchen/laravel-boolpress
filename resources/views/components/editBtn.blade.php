@@ -1,3 +1,3 @@
-<a href="{{ route('admin.posts.edit', $post->id) }}" class="badge badge-warning" title="Edit">
+<a href="{{ route($route, $genericObj->id) }}" class="badge badge-warning" title="Edit">
     <i class="fas fa-edit"></i>
 </a>

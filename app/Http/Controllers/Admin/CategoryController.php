@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Category; 
+use App\Category;
+use App\Post;
 use App\Traits\generateSlug;
 
 
@@ -19,7 +20,8 @@ class CategoryController extends Controller
     public function index()
     {
         $data = [
-            'categories' => Category::all(),
+            'categories' => Category::orderBy('updated_at', 'DESC')->get(),
+            'posts' => Post::all(),
         ];
 
         return view('admin.categories.index', $data);
@@ -86,9 +88,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit($id)
     {
-        $categoryToEdit = Category::where('slug', $slug)->first();
+        $categoryToEdit = Category::findOrFail($id);
 
         return view('admin.categories.edit', ['category' => $categoryToEdit]);
     }
