@@ -33,11 +33,4 @@ trait GenerateSlug
         return $slug; 
 
     }
-
-    // static public function checkSlug($str) 
-    // {
-    //     $slug_exist = Category::where('slug', $str)->first();
-
-
-    // }
 }

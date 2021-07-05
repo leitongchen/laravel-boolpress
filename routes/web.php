@@ -39,16 +39,20 @@ Route::prefix('admin')
         Route::get('/', 'HomeController@index')->name('index');
 
         Route::resource('/posts', 'PostController');
-    });
-
-
-
-// ADMIN CATEGORIES ROUTES CRUD
-Route::prefix('admin')
-    ->namespace('Admin')
-    ->middleware('auth')
-    ->name('admin.')
-    ->group(function() {
 
         Route::resource('/categories', 'CategoryController');
+
+        Route::resource('/tags', 'TagController');
+
     });
+
+
+
+// // ADMIN CATEGORIES ROUTES CRUD
+// Route::prefix('admin')
+//     ->namespace('Admin')
+//     ->middleware('auth')
+//     ->name('admin.')
+//     ->group(function() {
+
+//     });
