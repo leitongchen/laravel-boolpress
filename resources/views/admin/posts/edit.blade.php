@@ -51,6 +51,21 @@
                 </select>
             </div>
 
+            <div class="input-group-lg input_group">
+                <label>Select one or more tags</label>
+                @foreach($tags as $tag)
+                    
+                    <div class="form-check form-check-inline">
+                        <label for="{{$tag->name}}" class="form-check-label">
+                            <input name="tags[]" id="{{$tag->name}}" type="checkbox" class="form-check-input d-inline" 
+                            value="{{$tag->id}}"
+                            {{$post->tags->contains($tag) ? "checked" : ""}}>
+                            {{ $tag->name }}
+                        </label>
+                    </div>
+                    
+                @endforeach
+            </div>
            
             <input class="submit_btn btn btn-primary btn-lg btn-block" type="submit" value="Update post">
             

@@ -86,6 +86,28 @@
                 </div>
             </div>
 
+            <div>
+                <h6>Tags:</h6>
+
+                <div class="info-text">
+                    @if(count($post->tags)>0)
+                    @foreach($post->tags as $tag)
+
+                    <div class="badge badge-info">
+                        <a href="#" class="text-white">
+                            {{ $post->tags ? $tag['name'] : "-" }}
+                        </a>
+                    </div>
+
+                    @endforeach
+                    @else
+                    <span>No tags</span>
+                    @endif
+
+                </div>
+            </div>
+            
+
         </div>
 
     </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Tag;
 use App\Traits\generateSlug;
 
 class PostController extends Controller
@@ -32,8 +33,12 @@ class PostController extends Controller
     public function create()
     {
         $categoriesList = Category::all();
+        $tagsList = Tag::all();
 
-        return view('admin.posts.create', ['categories' => $categoriesList]);
+        return view('admin.posts.create', [
+            'categories' => $categoriesList,
+            'tags' => $tagsList
+        ]);
     }
 
     /**
@@ -48,17 +53,9 @@ class PostController extends Controller
 
         $newPost = new Post();
 
-        // dump($request->user());
-        // dump($request->user()->name);
-        // dump($request->user()->id);
-        // dump($request->user()->email);
-
         $newPost->fill($newPostInput);
+
         $newPost->user_id = $request->user()->id;
-
-        // dump($request->category);
-        // return;
-
         $newPost->category_id = $request->category; 
 
         // Creating SLUG
@@ -66,6 +63,11 @@ class PostController extends Controller
 
         $newPost->slug = $slug;
         $newPost->save();
+
+        if ($request->tags) {
+            $newPost->tags()->sync($newPostInput['tags']);
+        }
+
 
         return redirect()->route('admin.posts.show', $newPost->slug);
     }
@@ -101,11 +103,13 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id); 
         $categoriesList = Category::all();
+        $tagsList = Tag::all();
 
 
         return view('admin.posts.edit', [
             'post' => $post,
-            'categories' => $categoriesList
+            'categories' => $categoriesList,
+            'tags' => $tagsList
         ]);
     }
 
@@ -120,10 +124,6 @@ class PostController extends Controller
     {
         $form_data = $request->all();
 
-        // dump($form_data);
-        // return;
-        // dump($post->title);
-
         if ($form_data['title'] != $post->title) {
 
             $slug = GenerateSlug::createSlug($form_data);
@@ -133,6 +133,8 @@ class PostController extends Controller
         
         $post->category_id = $form_data['category']; 
         $post->update($form_data);
+
+        $post->tags()->sync($form_data['tags']);
 
 
         return redirect()->route('admin.posts.show', $post->slug);

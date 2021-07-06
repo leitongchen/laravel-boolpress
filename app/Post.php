@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
+        'id',
         "title",
         "content",
         "slug",
@@ -21,5 +22,10 @@ class Post extends Model
     public function user() 
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function tags() 
+    {
+        return $this->belongsToMany('App\Tag');
     }
 }

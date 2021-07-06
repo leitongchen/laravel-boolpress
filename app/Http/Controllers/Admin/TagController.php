@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Tag;
 use Illuminate\Http\Request;
+use App\Traits\generateSlug;
 
 class TagController extends Controller
 {
@@ -14,7 +16,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all(); 
+
+        return view('admin.tags.index', ['tags' => $tags]);
     }
 
     /**
@@ -24,7 +28,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tags.create');
     }
 
     /**
@@ -35,7 +39,20 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newInput = $request->all();
+
+        $newTag = new Tag(); 
+
+        $newTag->name = $newInput['name'];
+        
+        // Creating SLUG
+        $slug = GenerateSlug::createSlug($newTag);
+
+        $newTag->slug = $slug;
+        $newTag->save();
+
+        return redirect()->route('admin.tags.show', $newTag->slug);
+
     }
 
     /**
@@ -44,9 +61,19 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $tag = Tag::where('slug', $slug)->first();
+
+        if (!$tag) {
+            abort(404);
+        }
+
+        $data = [
+            'tag' => $tag
+        ];
+
+        return view('admin.tags.show', $data);
     }
 
     /**
@@ -57,7 +84,9 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tagToEdit = Tag::findOrFail($id);
+
+        return view('admin.tags.edit', ['tag' => $tagToEdit]);
     }
 
     /**
@@ -67,9 +96,18 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $form_data = $request->all();
+
+        if ($form_data['name'] != $tag->name) {
+
+            $slug = GenerateSlug::createSlug($form_data);
+            $form_data['slug'] = $slug; 
+        }
+        $tag->update($form_data);
+
+        return redirect()->route('admin.tags.show', $tag->slug);
     }
 
     /**
@@ -80,6 +118,10 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+
+        $tag->delete();
+
+        return redirect()->route('admin.tags.index');
     }
 }
