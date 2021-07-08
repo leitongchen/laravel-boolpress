@@ -14,7 +14,7 @@ class PostsTableSeeder extends Seeder
     {
         Post::truncate();
 
-        for ($i=0; $i<40; $i++) {
+        for ($i=0; $i<10; $i++) {
             $posts = factory(Post::class)->create(); 
         }
     }

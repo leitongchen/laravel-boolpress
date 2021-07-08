@@ -1,17 +1,22 @@
 @extends('layouts.dashboard')
 
-@section('content')
-
+@section('link-section')
     <a href="{{ route('admin.categories.index') }}">Back to overview</a>
+@endsection
 
+
+
+@section('content')
 
     <form action="{{ route('admin.categories.store') }}" method="post">
         @csrf
 
-        <label for="name">Create a new category</label>
-        <input type="text" name="name" id="name">
+        <div class="input-group-lg input_group">
+            <label for="name">Create a new category</label>
+            <input class="form-control" type="text" name="name" id="name">
+        </div>
 
-        <input type="submit" value="Save">
+        <input class="submit_btn btn btn-primary btn-lg btn-block" type="submit" value="Save">
 
     </form>
 

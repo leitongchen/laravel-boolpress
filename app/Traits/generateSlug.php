@@ -10,7 +10,7 @@ trait GenerateSlug
     {
         if (is_array($el)) {
 
-            $colName = $el['title'] ? 'title' : 'name';
+            $colName = in_array('title', $el) ? 'title' : 'name';
             $slug =  Str::slug($el[$colName]);
 
         } else if (is_object($el)) {

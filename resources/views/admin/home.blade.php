@@ -23,14 +23,6 @@
             </div>
         </div>
 
-        {{-- <div class="col-md-8">
-            <div class="card">
-
-                <div class="card-body">
-                   <a href="{{ route('posts.index') }}">To the articles...</a>
-                </div>
-            </div>
-        </div> --}}
     </div>
 
 

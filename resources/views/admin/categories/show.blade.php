@@ -1,8 +1,12 @@
 @extends('layouts.dashboard')
 
+@section('link-section')
+    <a href="{{ route('admin.categories.index') }}">Back to overview</a>
+
+@endsection
+
 @section('content')
 
-    <a href="{{ route('admin.categories.index') }}">Back to overview</a>
 
 
     <h6>ID: {{ $category->id }}</h6>

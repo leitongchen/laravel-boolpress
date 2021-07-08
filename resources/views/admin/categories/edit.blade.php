@@ -22,8 +22,9 @@
 @section('content')
 
 
-    <form action="{{ route('admin.categories.store') }}" method="post">
+    <form action="{{ route('admin.categories.update', $category->id) }}" method="post">
         @csrf
+        @method('put')
 
         <div class="input-group-lg input_group">
             <label for="name">Modify category</label>
