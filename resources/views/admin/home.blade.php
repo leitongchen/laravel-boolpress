@@ -29,11 +29,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <h3 class="mt-5">Tutti i post</h3>
-
+            <h3 class="mt-5">Last posts</h3>
 
             @foreach($posts as $post)
-                
             <div class="card public_post my-4">
                 <div class="card-body">
                     <h3 class="card-title">{{ $post->title }}</h3>
@@ -58,9 +56,9 @@
                     <img src="{{ $post->src }}" class="card-img-bottom img-fluid" alt="">
                 @endif
             </div>
-
-
             @endforeach
+
+            <a href="{{ route('posts.index') }}">All posts...</a>
         </div>
     </div>    
 
