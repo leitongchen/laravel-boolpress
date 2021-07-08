@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
 use App\Traits\generateSlug;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Psy\Command\WhereamiCommand;
 
 class CategoryController extends Controller
 {
@@ -19,9 +21,21 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $userId = Auth::user()->id;
+
+        $categoriesList = Category::orderBy('updated_at', 'DESC')->get();
+
+        $userPosts = Category::
+            join('posts', 'posts.category_id', '=', 'categories.id')
+            ->where("user_id", $userId)
+            ->get();
+
+        // dump($userPosts);
+        // return;
+        
         $data = [
-            'categories' => Category::orderBy('updated_at', 'DESC')->get(),
-            'posts' => Post::all(),
+            'categories' => $categoriesList,
+            'user_posts' => $userPosts
         ];
 
         return view('admin.categories.index', $data);

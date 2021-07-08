@@ -29,9 +29,12 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->slug }}</td>
-                    <td>{{ count($posts->where('category', $category)) }}</td>
-            
-                    {{-- @dump($category) --}}
+
+                    <td>
+                        <a href="{{ route('admin.posts.filter', ['category' => $category->id]) }}">
+                            {{ count($category->posts->where('user_id', Auth::user()->id)) }}
+                        </a>
+                    </td>
 
                     <td class="cta-btn-box">
 

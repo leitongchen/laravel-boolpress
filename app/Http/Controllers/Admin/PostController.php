@@ -8,6 +8,9 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use App\Traits\generateSlug;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -16,13 +19,23 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Post $post)
     {
-        $posts = Post::orderBy('updated_at', 'DESC')->get();
+        $incomingData = session('posts');
 
-        return view('admin.posts.index', [
-            'posts' => $posts,
-        ]);
+        if (isset($incomingData)) {
+            $data = [
+                'posts' => $incomingData
+            ];
+        } else {
+            $data = [
+                'posts' => Post::orderBy('updated_at', 'DESC')
+                    ->where('user_id', $request->user()->id)
+                    ->get()
+            ];
+        }
+
+        return view('admin.posts.index', $data);
     }
 
     /**
@@ -150,8 +163,43 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        $post->tags()->detach();
+
         $post->delete();
 
         return redirect()->route('admin.posts.index');
+    }
+
+    public function filter(Request $request) 
+    {
+        $filters = $request->all();
+        $userId = Auth::user()->id;
+
+        if (key_exists('category', $filters)) {
+
+            $posts = Post::
+                with('user')
+                ->where([
+                    ['category_id', $filters['category']],
+                    ['user_id', $userId]
+                ])
+                ->get();
+            
+
+        } else if (key_exists('tag', $filters)) {
+
+            $posts = Post::
+            with('user')
+            ->with('category')
+            ->join('post_tag', 'posts.id', '=', 'post_tag.post_id')
+            
+            ->where([
+                ['post_tag.tag_id', $filters['tag']],
+                ['user_id', $userId]
+            ])
+            ->get();
+        }
+        
+        return redirect()->route('admin.posts.index')->with(['posts' => $posts]);
     }
 }

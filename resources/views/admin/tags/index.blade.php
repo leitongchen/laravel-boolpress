@@ -30,7 +30,11 @@
                     <td>{{ $tag->name }}</td>
                     <td>{{ $tag->slug }}</td>
                     <td>
-                    {{-- {{ count($posts->where('category', $category)) }} --}}
+                     
+                        <a href="{{ route('admin.posts.filter', ['tag' => $tag->id]) }}">
+                            {{ count($tag->posts->where('user_id', Auth::user()->id)) }}
+                        </a>
+                            
                     </td>
 
                     <td class="cta-btn-box">
