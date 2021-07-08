@@ -1,8 +1,15 @@
 @extends('layouts.app')
 
-@section('content')
+@section('link-section')
 
     <a href="{{ route('posts.index') }}">Back to overview</a>
+
+@endsection
+
+
+
+@section('content')
+
     
 
     {{-- <h1>Pagina show che mostra solo un unico post</h1> --}}

@@ -50,7 +50,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                @yield('link-btn')
+                                <a class="nav-link" href="{{ route('admin.posts.index') }}">Control Panel</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -79,7 +79,11 @@
             </div>
         </nav>
         <div class="container">
-            
+            <div class="row">
+                <nav class="cta_nav">
+                        @yield('link-section')
+                </nav>
+            </div>
             <div class="row">
                 <div class="col-md-10">
                     <main class="py-4">

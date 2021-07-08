@@ -23035,3 +23035,9 @@ form .submit_btn {
   font-size: 0.99rem;
 }
 
+.public_post .card-img-bottom {
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+

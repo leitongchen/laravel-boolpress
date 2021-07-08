@@ -96,3 +96,15 @@ form {
         font-size: $font-size-base*1.1;
     }
 }
+
+
+// PUBLIC POSTS INDEX LAYOUT
+
+.public_post {
+
+    .card-img-bottom {
+        height: 250px;
+        object-fit: cover;
+
+    }
+}
