@@ -31,6 +31,7 @@
 
             <h3 class="mt-5">Tutti i post</h3>
 
+
             @foreach($posts as $post)
                 
             <div class="card public_post my-4">
@@ -40,7 +41,7 @@
                         {{ $post->content }}
                     </p>
                     <div class="d-flex justify-content-between">
-                        <p class="card-text"><small class="text-muted">Last updated {{ $post->updated_at }}</small></p>
+                        <p class="card-text"><small class="text-muted">Last updated <span class="text-info">{{ $post->updatedAt}}</span></small></p>
                         
                         <p class="card-text text-muted"> 
                             Author:

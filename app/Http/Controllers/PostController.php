@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+
+use App\Traits\FormatDate;
 class PostController extends Controller
 {
     /**
@@ -18,6 +20,8 @@ class PostController extends Controller
             ->orderBy('updated_at', 'DESC')
             ->get();
 
+        FormatDate::formatDate($posts);
+        
         return view('posts.index', ['posts'=>$posts]);
     }
 
