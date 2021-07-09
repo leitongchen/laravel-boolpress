@@ -79,18 +79,21 @@
             </div>
         </nav>
         <div class="container">
-            <div class="row">
-                <nav class="cta_nav">
-                        @yield('link-section')
-                </nav>
-            </div>
-            <div class="row">
-                <div class="col-md-10">
-                    <main class="py-4">
-                        @yield('content')
-                    </main>
+
+            <nav class="cta_nav">
+                <div class="row">
+
+                    @yield('link-section')
                 </div>
-            </div>
+
+            </nav>
+
+            <main class="py-4">
+                <div class="row">
+
+                    @yield('content')
+                </div>
+            </main>
 
         </div>
        

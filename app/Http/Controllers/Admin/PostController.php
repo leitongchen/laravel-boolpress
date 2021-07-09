@@ -27,7 +27,6 @@ class PostController extends Controller
         if (isset($incomingData)) {
             $data = [
                 'posts' => $incomingData,
-                
             ];
         } else {
             $data = [
