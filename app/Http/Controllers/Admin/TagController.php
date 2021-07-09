@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Tag;
 use Illuminate\Http\Request;
-use App\Traits\generateSlug;
+
+use App\Traits\Utilities;
 
 class TagController extends Controller
 {
@@ -46,7 +47,7 @@ class TagController extends Controller
         $newTag->name = $newInput['name'];
         
         // Creating SLUG
-        $slug = GenerateSlug::createSlug($newTag);
+        $slug = Utilities::createSlug($newTag);
 
         $newTag->slug = $slug;
         $newTag->save();
@@ -102,7 +103,7 @@ class TagController extends Controller
 
         if ($form_data['name'] != $tag->name) {
 
-            $slug = GenerateSlug::createSlug($form_data);
+            $slug = Utilities::createSlug($form_data);
             $form_data['slug'] = $slug; 
         }
         $tag->update($form_data);

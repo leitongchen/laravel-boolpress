@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 
 use App\Category;
 use App\Post;
-use App\Traits\generateSlug;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Psy\Command\WhereamiCommand;
+
+use App\Traits\Utilities;
+
 
 class CategoryController extends Controller
 {
@@ -66,7 +68,7 @@ class CategoryController extends Controller
         $newCategory->name = $newInput['name'];
         
         // Creating SLUG
-        $slug = GenerateSlug::createSlug($newCategory);
+        $slug = Utilities::createSlug($newCategory);
 
         $newCategory->slug = $slug;
         $newCategory->save();
@@ -122,7 +124,7 @@ class CategoryController extends Controller
 
         if ($form_data['name'] != $category->name) {
 
-            $slug = GenerateSlug::createSlug($form_data);
+            $slug = Utilities::createSlug($form_data);
 
             $form_data['slug'] = $slug; 
         }

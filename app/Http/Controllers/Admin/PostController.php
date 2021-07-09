@@ -11,7 +11,6 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-use App\Traits\generateSlug;
 use App\Traits\Utilities;
 
 class PostController extends Controller
@@ -79,7 +78,7 @@ class PostController extends Controller
         $newPost->category_id = $request->category; 
 
         // Creating SLUG
-        $slug = GenerateSlug::createSlug($newPost);
+        $slug = Utilities::createSlug($newPost);
 
         $newPost->slug = $slug;
         $newPost->save();
@@ -146,7 +145,7 @@ class PostController extends Controller
 
         if ($form_data['title'] != $post->title) {
 
-            $slug = GenerateSlug::createSlug($form_data);
+            $slug = Utilities::createSlug($form_data);
 
             $form_data['slug'] = $slug; 
         }

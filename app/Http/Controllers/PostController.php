@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-use App\Traits\FormatDate;
 use Illuminate\Support\Facades\Auth;
+
+use App\Traits\Utilities;
+
 
 class PostController extends Controller
 {
@@ -29,7 +31,7 @@ class PostController extends Controller
             ];
         }
 
-        FormatDate::formatDate($data['posts']);
+        Utilities::formatDate($data['posts']);
         
         return view('posts.index', $data);
     }
