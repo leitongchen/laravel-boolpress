@@ -23,14 +23,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-// GUEST ROUTES POST index/show
-// Route::resource('/posts', 'PostController');
+// Route filter users search
 Route::get('/posts/filter', 'PostController@filter')->name('posts.filter');
+
+// GUEST ROUTES POST index/show
 Route::get('/posts', 'PostController@index')->name('posts.index');
 Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
-
-
-// Route::get('admin/posts/filter', 'Admin\PostController@filter')->name('admin.posts.filter');
 
 
 
@@ -48,8 +46,6 @@ Route::prefix('admin')
         Route::resource('/posts', 'PostController');
         Route::resource('/categories', 'CategoryController');
         Route::resource('/tags', 'TagController');
-
-
 });
 
 

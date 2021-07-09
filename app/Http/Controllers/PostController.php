@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 
+use App\Category;
 use App\Traits\Utilities;
 
 
@@ -20,14 +21,19 @@ class PostController extends Controller
     {
         $incomingData = session('posts');
 
+        $categories = Category::all();
+       
+
         if (isset($incomingData)) {
             $data = [
-                'posts' => $incomingData
+                'posts' => $incomingData,
+                'categories' => $categories
             ];
         } else {
             $data = [
                 'posts' => Post::orderBy('updated_at', 'DESC')
-                    ->get()
+                    ->get(),
+                'categories' => $categories
             ];
         }
 
@@ -63,28 +69,14 @@ class PostController extends Controller
     {
         $filters = $request->all();
 
-        if (key_exists('category', $filters)) {
+        $conditions = Utilities::setConditionsDB($filters);
 
-            $posts = Post::
-                with('user')
-                ->where([
-                    ['category_id', $filters['category']],
-                ])
-                ->get();
-            
-
-        } else if (key_exists('tag', $filters)) {
-
-            $posts = Post::
-            with('user')
-            ->with('category')
-            ->join('post_tag', 'posts.id', '=', 'post_tag.post_id')
-            
-            ->where([
-                ['post_tag.tag_id', $filters['tag']],
-            ])
-            ->get();
-        }
+        $posts = Post::
+                    with('user')
+                    ->with('category')
+                    ->join('post_tag', 'posts.id', '=', 'post_tag.post_id')
+                    ->where($conditions)
+                    ->get();
         
         return redirect()->route('posts.index')->with(['posts' => $posts]);
     }

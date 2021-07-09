@@ -2,7 +2,7 @@
     <div class="card-header">Looking for something?</div>
     
     <div class="p-5">
-        <form class="form-row d-flex align-items-end" action="{{ route('admin.posts.filter') }}" method="get">
+        <form class="form-row d-flex align-items-end" action="{{ route($route) }}" method="get">
             @csrf
 
             <div class="input-group-lg input_group col">

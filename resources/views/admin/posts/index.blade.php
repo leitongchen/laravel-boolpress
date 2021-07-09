@@ -2,7 +2,7 @@
 
 @section('link-section')
 
-    @include('admin.partials.searchForm', ['categories' => $categories])
+    @include('partials.searchForm', ['categories' => $categories, 'route' => 'admin.posts.filter'])
 
 @endsection
 
