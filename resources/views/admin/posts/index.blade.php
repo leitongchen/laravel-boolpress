@@ -1,5 +1,12 @@
 @extends('layouts.dashboard')
 
+@section('link-section')
+
+    @include('admin.partials.searchForm', ['categories' => $categories])
+
+@endsection
+
+
 
 @section('content')
 
