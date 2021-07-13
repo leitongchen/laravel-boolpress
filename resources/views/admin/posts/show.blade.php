@@ -46,10 +46,10 @@
 
         </div>  
         
-        @if($post->src)
+        @if($post->post_cover)
             
             <div class="img-box">
-                <img src="{{$post->src}}" alt="random image">
+                <img src="{{ asset('storage/' . $post->post_cover) }}" alt="{{$post->slug . "image"}}">
             </div>
 
         @endif
@@ -78,11 +78,13 @@
             <div>
                 <h6>Category:</h6>
                 <div class="info-text">
+                    @if($post->category)
                     <a href="{{ route('admin.posts.filter', ['category' => $post->category['id']]) }}">
-                    
-                        {{ $post->category ? $post->category['name'] : "-" }}
-                    
+                        {{ $post->category['name'] }}
                     </a>
+                    @else 
+                    <span> - </span>
+                    @endif
                 </div>
             </div>
 

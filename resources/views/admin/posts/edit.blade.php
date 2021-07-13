@@ -20,7 +20,7 @@
 
     <div>
     
-        <form action="{{ route('admin.posts.update', $post->id) }}" method="post">
+        <form action="{{ route('admin.posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
 
@@ -35,8 +35,8 @@
             </div>
 
             <div class="input-group-lg input_group">
-                <label for="src">Paste your image src</label>
-                <input class="form-control" type="text" name="src" id="src" value="{{ $post->src }}">
+                <label for="post_cover">Upadate an image</label>
+                <input class="form-control" type="file" name="post_cover" id="post_cover" value="{{ $post->post_cover }}">
             </div>
 
             <div class="input-group-lg input_group">

@@ -14,7 +14,7 @@
 
 @section('content')
 
-    <form action="{{ route('admin.posts.store') }}" method="post">
+    <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="input-group-lg input_group">
@@ -30,6 +30,11 @@
         <div class="input-group-lg input_group">
             <label for="src">Paste your image src</label>
             <input class="form-control" type="text" name="src" id="src">
+        </div>
+
+        <div class="input-group-lg input_group">
+            <label for="post_cover">Upload cover image</label>
+            <input class="form-control" type="file" name="post_cover" id="post_cover">
         </div>
 
         <div class="input-group-lg input_group">

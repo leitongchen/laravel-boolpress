@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use App\Traits\Utilities;
+use Illuminate\Support\Facades\Storage;
+use Throwable;
 
 class PostController extends Controller
 {
@@ -69,8 +71,10 @@ class PostController extends Controller
     {
         $newPostInput = $request->all(); 
 
-        $newPost = new Post();
+        // dump($request);
+        // return; 
 
+        $newPost = new Post();
         $newPost->fill($newPostInput);
 
         $newPost->user_id = $request->user()->id;
@@ -78,14 +82,19 @@ class PostController extends Controller
 
         // Creating SLUG
         $slug = Utilities::createSlug($newPost);
-
         $newPost->slug = $slug;
+
+        // Img upload
+        if (array_key_exists('post_cover', $newPostInput)) {
+            $img_path = Storage::put('postsCovers', $newPostInput['post_cover']);
+            $newPost->post_cover = $img_path;
+        }
+
         $newPost->save();
 
         if ($request->tags) {
             $newPost->tags()->sync($newPostInput['tags']);
         }
-
 
         return redirect()->route('admin.posts.show', $newPost->slug);
     }
@@ -98,9 +107,14 @@ class PostController extends Controller
      */
     public function show($slug)
     {
+        $userId = Auth::user()->id; 
+
         $post = Post::where('slug', $slug)->first();
 
-        if (!$post) {
+        // dump($post->user_id);
+        // return;
+
+        if (!$post || $post->user_id != $userId) {
             abort(404);
         }
 
@@ -143,17 +157,28 @@ class PostController extends Controller
         $form_data = $request->all();
 
         if ($form_data['title'] != $post->title) {
-
             $slug = Utilities::createSlug($form_data);
-
             $form_data['slug'] = $slug; 
         }
         
-        $post->category_id = $form_data['category']; 
+        if ($post->post_cover) {
+            Storage::delete($post->post_cover);
+        }
+        if (array_key_exists('post_cover', $form_data)) {
+
+            $img_path = Storage::put('postsCovers', $form_data['post_cover']);
+            $form_data['post_cover'] = $img_path;
+        }
+
+        if (array_key_exists('category', $form_data)) {
+            $post->category_id = $form_data['category']; 
+        }
+
+        if (array_key_exists('tags', $form_data)) {
+            $post->tags()->sync($form_data['tags']);
+        }
+
         $post->update($form_data);
-
-        $post->tags()->sync($form_data['tags']);
-
 
         return redirect()->route('admin.posts.show', $post->slug);
     }
