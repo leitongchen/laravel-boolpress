@@ -41,9 +41,24 @@ trait Utilities
 
     static public function createSlug($el) 
     {
+        // dump($el);
+        // return;
+
         if (is_array($el)) {
 
-            $colName = in_array('title', $el) ? 'title' : 'name';
+            $new_arr = array_map(function($piece){
+
+                if (is_array($piece)) {
+                    return (array) $piece;
+                } else {
+                    return (string) $piece;
+                }
+            }, $el);
+
+            // dump(array_key_exists('title', $new_arr));
+            // return; 
+
+            $colName = array_key_exists('title', $new_arr) ? 'title' : 'name';
             $slug =  Str::slug($el[$colName]);
 
         } else if (is_object($el)) {
