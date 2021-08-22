@@ -137,6 +137,11 @@ class PostController extends Controller
         $categoriesList = Category::all();
         $tagsList = Tag::all();
 
+        $userId = Auth::user()->id; 
+
+        if (!$post || $post->user_id != $userId) {
+            abort(404);
+        }
 
         return view('admin.posts.edit', [
             'post' => $post,
@@ -157,14 +162,19 @@ class PostController extends Controller
         $form_data = $request->all();
 
         if ($form_data['title'] != $post->title) {
+
+            // dump($form_data);
+            // return; 
+
             $slug = Utilities::createSlug($form_data);
             $form_data['slug'] = $slug; 
         }
-        
-        if ($post->post_cover) {
-            Storage::delete($post->post_cover);
-        }
+
         if (array_key_exists('post_cover', $form_data)) {
+
+            if ($post->post_cover) {
+                Storage::delete($post->post_cover);
+            }
 
             $img_path = Storage::put('postsCovers', $form_data['post_cover']);
             $form_data['post_cover'] = $img_path;
