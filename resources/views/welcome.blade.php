@@ -86,6 +86,7 @@
 
                 <div class="links">
                     <a href="{{ route('posts.index') }}">Blog</a>
+                    <a href="{{ route('contact') }}">Contact</a>
                 </div>
             </div>
         </div>

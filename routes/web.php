@@ -18,9 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/contact/sendform', 'HomeController@sendForm')->name('sendForm');
+
+Auth::routes();
 
 
 // Route filter users search
