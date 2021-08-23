@@ -34,13 +34,15 @@
 
         </div>  
         
-        @if($post->src)
-            
-            <div class="img-box">
-                <img src="{{$post->src}}" alt="random image">
-            </div>
-
-        @endif
+        
+        <div class="img-box">
+            @if($post->post_cover)
+                <img src="{{ asset('storage/' . $post->post_cover) }}" alt="">
+            @else 
+                <img src="https://media.sproutsocial.com/uploads/2018/04/Facebook-Cover-Photo-Size.png" alt="random image">
+            @endif
+        </div>
+        
 
         <div class="content-box">
         
@@ -63,16 +65,20 @@
                 </div>
             </div>
 
+            
             <div>
                 <h6>Category:</h6>
                 <div class="info-text">
+                    @if($post->category)
                     <a href="{{ route('posts.filter', ['category' => $post->category['id']]) }}">
-                    
                         {{ $post->category ? $post->category['name'] : "-" }}
-                    
                     </a>
+                    @else 
+                    <span>No category</span>
+                    @endif
                 </div>
             </div>
+            
 
             <div>
                 <h6>Tags:</h6>

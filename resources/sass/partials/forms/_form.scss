@@ -1,0 +1,83 @@
+// FORM EDIT & CREATE 
+
+.search_form_container {
+
+    margin-top: $spacing*2;
+
+    .card {
+        border: 2px solid $primary_color; 
+        border-radius: 1rem;
+        background-color: white;
+
+        padding: $spacing*2;
+
+        h2 {
+            padding-top: 0;
+            margin-bottom: $spacing;
+        }
+    }
+
+    .card-header {
+        color: $primary_color;
+        background-color: white;
+        border-bottom: 0;
+    }
+
+    @include xs-screen {
+
+        .card {
+            padding: $spacing;
+
+            h2 {
+                margin-bottom: 0;
+            }
+        }
+
+        .submit_btn {
+            margin-top: 25px;
+        }
+
+        
+    }
+    
+}
+
+
+form {
+
+
+    .input_group {
+        
+        .form-control {
+            font-size: .85rem;
+
+            &:focus {
+
+                color: $text_color_dark;
+                background-color: #fff;
+                border-color: $secondary_color;
+                outline: 0;
+                box-shadow: 0 0 0 0.2rem $secondary_color;
+            }
+        }
+
+        label {
+            font-weight: 900;
+            font-size: .85rem;
+    
+            color: $primary_color;
+
+            margin-bottom: 0;
+        }
+
+    }
+
+    
+
+
+    textarea {
+        height: 400px;
+
+        padding: $spacing/2;
+    }
+}

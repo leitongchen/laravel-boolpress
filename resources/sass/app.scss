@@ -1,8 +1,8 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Urbanist');
 
 // Variables
-@import 'variables';
+@import 'partials/variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -15,8 +15,9 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/icons';
 
-
+@import 'partials/mixin';
 @import 'partials/common';
+@import 'partials/forms/form';
 @import 'partials/btns';
 @import 'partials/nav';
 

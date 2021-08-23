@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Urbanist);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
@@ -34,7 +34,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: "Urbanist", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,7 +66,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Urbanist", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -6407,7 +6407,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Urbanist", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6532,7 +6532,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Urbanist", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -22925,8 +22925,23 @@ readers do not read off random characters that represent icons */
   content: "\F63F";
 }
 
+h2 {
+  font-size: 1.26rem;
+  font-weight: bolder;
+}
+
+h3 {
+  font-size: 1.08rem;
+  font-weight: bold;
+}
+
 h6 {
   font-size: 0.9rem;
+}
+
+p {
+  font-size: 0.9rem;
+  color: #49585f;
 }
 
 .table {
@@ -22941,6 +22956,87 @@ h6 {
   display: flex;
 }
 
+.img-box {
+  width: 100%;
+  height: 400px;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.search_form_container {
+  margin-top: 40px;
+}
+
+.search_form_container .card {
+  border: 2px solid #5C9FBF;
+  border-radius: 1rem;
+  background-color: white;
+  padding: 40px;
+}
+
+.search_form_container .card h2 {
+  padding-top: 0;
+  margin-bottom: 20px;
+}
+
+.search_form_container .card-header {
+  color: #5C9FBF;
+  background-color: white;
+  border-bottom: 0;
+}
+
+@media only screen and (max-width: 576px) {
+  .search_form_container .card {
+    padding: 20px;
+  }
+
+  .search_form_container .card h2 {
+    margin-bottom: 0;
+  }
+
+  .search_form_container .submit_btn {
+    margin-top: 25px;
+  }
+}
+
+form .input_group .form-control {
+  font-size: 0.85rem;
+}
+
+form .input_group .form-control:focus {
+  color: #49585f;
+  background-color: #fff;
+  border-color: #fade80;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #fade80;
+}
+
+form .input_group label {
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: #5C9FBF;
+  margin-bottom: 0;
+}
+
+form textarea {
+  height: 400px;
+  padding: 10px;
+}
+
+a {
+  color: #5C9FBF;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #49585f;
+}
+
 a.badge {
   font-size: 0.9rem;
   font-weight: 400;
@@ -22949,8 +23045,62 @@ a.badge {
   margin-right: 0.5rem;
 }
 
+.bool_btn {
+  padding: 8px 16px;
+  border: 0;
+  font-size: 0.85rem;
+}
+
+.primary_btn {
+  background-color: #5C9FBF;
+  color: white;
+}
+
+.block_btn {
+  width: 100%;
+}
+
 .cta_nav {
   margin: 20px 0;
+}
+
+nav.bool_nav .navbar-brand {
+  font-weight: bolder;
+  color: #5C9FBF;
+}
+
+.welcome_content {
+  padding-bottom: 40px;
+}
+
+.welcome_content .img-box {
+  margin: auto;
+  height: 50vh;
+}
+
+.welcome_content .img-box img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.welcome_content .welcome_title {
+  font-size: 2rem;
+  margin: 40px 0;
+}
+
+.welcome_content .links a {
+  padding: 0 20px;
+}
+
+@media only screen and (max-width: 576px) {
+  .welcome_content .welcome_title {
+    margin-top: 0;
+  }
+
+  .welcome_content .links a {
+    display: block;
+    margin: 20px 0;
+  }
 }
 
 .post-container .head-box {
@@ -23006,34 +23156,103 @@ a.badge {
   text-decoration: underline;
 }
 
-form label {
-  font-weight: 900;
-  font-size: 0.99rem;
+.public_post {
+  min-height: 250px;
+  padding-top: 40px;
 }
 
-form label,
-form input {
-  display: block;
+.public_post > div {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding-right: 40px;
+  border-radius: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  box-shadow: 0px 5px 10px #dce1e2;
+  height: 100%;
 }
 
-form input.form-control,
-form textarea,
-form select {
+.public_post > div .card-img {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.public_post > div .card-img img {
+  height: 100%;
   width: 100%;
-}
-
-form textarea {
-  height: 400px;
-  padding: 10px;
-}
-
-form .submit_btn {
-  font-size: 0.99rem;
-}
-
-.public_post .card-img-bottom {
-  height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.public_post > div .card-body {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-right: 0;
+}
+
+.public_post > div .card-body .card-title {
+  color: #5C9FBF;
+}
+
+.public_post > div .card-body .text_info,
+.public_post > div .card-body a {
+  color: #5C9FBF;
+}
+
+@media only screen and (max-width: 576px) {
+  .public_post > div {
+    padding-right: 0;
+  }
+
+  .public_post > div .card-img {
+    max-height: 200px;
+  }
+
+  .public_post > div .card-img img {
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  .public_post > div .card-body {
+    padding: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .public_post > div {
+    padding-right: 0;
+  }
+
+  .public_post > div .card-img {
+    max-height: 200px;
+  }
+
+  .public_post > div .card-img img {
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  .public_post > div .card-body {
+    padding: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .public_post > div {
+    padding-right: 0;
+  }
+
+  .public_post > div .card-img {
+    max-height: none;
+  }
+
+  .public_post > div .card-img img {
+    border-radius: 1rem 0 0 1rem;
+  }
+
+  .public_post > div .card-body {
+    padding: 1.25rem;
+  }
 }
 

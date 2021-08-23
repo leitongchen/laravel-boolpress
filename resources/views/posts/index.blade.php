@@ -2,19 +2,14 @@
 
 @section('link-section')
     
-    <div class="col-md-10">
-        @include('partials.searchForm', ['categories' => $categories, 'route' => 'posts.filter'])
-    </div>
+    @include('partials.searchForm', ['categories' => $categories, 'route' => 'posts.filter'])
+
     
 @endsection
 
 @section('content')
    
-    <div class="col-md-10">
-
-        @include('posts.partials.postCard', ['posts' => $posts])
+    @include('posts.partials.postCard', ['posts' => $posts])
         
-    </div>
-
 @endsection
 

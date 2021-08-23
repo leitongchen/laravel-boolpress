@@ -1,3 +1,46 @@
+// WELCOME PAGE
+.welcome_content {
+
+    padding-bottom: $spacing*2;
+
+
+    .img-box {
+        margin: auto;
+
+        height: 50vh;
+
+        img {
+            object-fit: contain;
+        }
+    }
+
+    .welcome_title {
+        font-size: 2rem;
+
+        margin: $spacing*2 0;
+    }
+
+    .links {
+        a {
+            padding: 0 $spacing;
+        }
+    }
+
+    @include xs-screen {
+        .welcome_title {
+            margin-top: 0; 
+        }
+
+        .links {
+            a {
+                display: block;
+                margin: $spacing 0;
+            }
+        }
+    }
+}
+
+
 // SHOW POST
 .post-container {
 
@@ -66,45 +109,118 @@
 }
 
 
-// FORM EDIT & CREATE 
-
-form {
-
-    .input_group {
-        // margin-bottom: $spacing;
-    }
-
-    label {
-        font-weight: 900;
-        font-size: $font-size-base*1.1;
-    }
-
-    label, input {
-        display: block;
-    }
-    input.form-control, textarea, select {
-        width: 100%;
-    }
-
-    textarea {
-        height: 400px;
-
-        padding: $spacing/2;
-    }
-
-    .submit_btn {
-        font-size: $font-size-base*1.1;
-    }
-}
 
 
 // PUBLIC POSTS INDEX LAYOUT
 
 .public_post {
+    min-height: 250px;
 
-    .card-img-bottom {
-        height: 250px;
-        object-fit: cover;
+    padding-top: $spacing*2;
+    
+    >div {
+        @include flex-between;
+    
+        background-color: white;
+        padding-right: $spacing*2;
+        border-radius: 1rem;
 
+        margin-left: 0;
+        margin-right: 0;
+
+        box-shadow: 0px 5px 10px $shadow_color;
+
+        height: 100%;
+    
+        .card-img {
+            
+            padding-left: 0px;
+            padding-right: 0px;
+    
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+
+                border-radius: 1rem 0 0 1rem;
+            }
+        }
+
+        .card-body {
+
+            @include flex-between;
+            flex-direction: column;
+
+            padding-right: 0;
+
+            .card-title {
+                color: $primary_color;
+            }
+
+           
+
+            .text_info, a {
+                color: $primary_color;
+            }
+            
+
+
+
+        }
     }
-}
+
+    @include xs-screen {
+        >div {
+            padding-right: 0;
+
+            .card-img {
+
+                max-height: 200px;
+
+                img {
+                    border-radius: 1rem 1rem 0 0;
+                }
+            }
+
+            .card-body {
+                padding: 1.25rem;
+            }
+        }
+    }
+    @include sm-screen {
+        >div {
+            padding-right: 0;
+
+            .card-img {
+
+                max-height: 200px;
+
+                img {
+                    border-radius: 1rem 1rem 0 0;
+                }
+            }
+
+            .card-body {
+                padding: 1.25rem;
+            }
+        }
+    }
+    @include md-screen {
+        >div {
+            padding-right: 0;
+
+            .card-img {
+                max-height: none;
+                img {
+                    border-radius: 1rem 0 0 1rem ;
+                }
+            }
+
+            .card-body {
+                padding: 1.25rem;
+            }
+        }
+    }
+} 
+
+

@@ -1,0 +1,41 @@
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+// MEDIA QUERIES
+
+@mixin xs-screen {
+    @media only screen and (max-width: 576px) {
+        @content;
+    }
+}
+
+@mixin sm-screen {
+    @media only screen and (min-width:576px) {
+        @content; 
+    }
+}
+
+@mixin md-screen {
+    @media only screen and (min-width:768px) {
+        @content; 
+    }
+}
+
+@mixin lg-screen {
+    @media only screen and (min-width:992px) {
+        @content; 
+    }
+}
+
+@mixin xl-screen {
+    @media only screen and (min-width:1140px) {
+        @content; 
+    }
+}

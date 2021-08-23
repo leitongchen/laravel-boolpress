@@ -2,3 +2,10 @@
     margin: $spacing 0;
 
 }
+
+nav.bool_nav {
+    .navbar-brand {
+        font-weight:bolder;
+        color: $primary_color;
+    }
+}

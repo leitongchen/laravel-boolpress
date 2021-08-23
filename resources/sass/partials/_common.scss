@@ -1,8 +1,29 @@
 // FONTS
+
+h2 {
+    font-size: $font-size-base*1.4;
+    font-weight: bolder;
+}
+
+h3 {
+    font-size: $font-size-base*1.2;
+    font-weight: bold;
+}
+
 h6 {
     font-size: $font-size-base;
 }
 
+p {
+    font-size: $font-size-base;
+    color: $text_color_dark;
+}
+
+@include xs-screen {
+    h2 {
+        
+    }
+}
 
 
 // TABLE INDEX
@@ -22,3 +43,19 @@ h6 {
     }         
 }
 
+
+
+// IMAGES 
+
+.img-box {
+    width: 100%;
+    height: 400px;
+
+    // margin: $spacing 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
