@@ -37,6 +37,14 @@ class HomeController extends Controller
 
     public function sendForm(Request $request)
     {
+
+        $request->validate([
+            'name' => 'required',
+            'surname' => 'required',
+            'email' => 'required|email:rfc,dns',
+            'message' => 'required',
+        ]);
+
         $formData = $request->all(); 
 
         Mail::to('admin@boolpress.com')->send(new SendForm($formData));
