@@ -1,59 +1,85 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="message_form col-10">
 
             <div class="px-2 mb-5 text-center">
                 <h2>Drop us a line</h2>
             </div>
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('sendForm') }}" method="get">
                 @csrf
 
-                <div class="d-flex">
+                <div class="row">
                 
-                    <div class="mb-3 flex-fill px-2">
+                    <div class="col-12 col-sm-6">
                         <label for="name" class="form-label">
                             Name
-                            <input type="text" class="form-control" name="name" id="name">
                         </label>
+                        <input type="text" class="form-control" name="name" id="name" class="@error('name') is-invalid @enderror">
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
-                    <div class="mb-3 flex-fill px-2">
+                    <div class="col-12 col-sm-6">
                         <label for="surname" class="form-label">
                             Surname
-                            <input type="text" class="form-control" name="surname" id="surname">
                         </label>
+                        <input type="text" class="form-control" name="surname" id="surname">
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }} </div>
+                        @enderror
                     </div>
 
-                </div>
-
-                <div class="mb-3 px-2">
-                    <label for="email" class="form-label">
-                        Email
+                    <div class="col-12">
+                        <label for="email" class="form-label">
+                            Email
+                        </label>
                         <input type="email" class="form-control" name="email" id="email">
-                    </label>
-                </div>
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }} </div>
+                        @enderror
+                    </div>
 
-                <div class="mb-3 px-2">
-                    <label for="message" class="form-label">
-                        Your message
+                    <div class="col-12">
+                        <label for="message" class="form-label">
+                            Your message
+                        </label>
                         <textarea name="message" class="form-control" id="message" cols="30" rows="6"></textarea>
-                    </label>
-                </div>
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }} </div>
+                        @enderror
+                    </div>
 
-                <div class="mb-3 px-2">
-                    <label for="attach" class="form-label">
-                        Attach
+                    <div class="col-12">
+                        <label for="attach" class="form-label">
+                            Attach
+                        </label>
                         <input type="file" class="form-control" name="attach" id="attach">
-                    </label>
-                </div>
+                    </div>
 
-                <div class="px-2">
-                    <input type="submit" class="form-control btn btn-primary" value="Send your message">
-                </div>
+                    <div class="col-12 submit_btn_box">
+                        <input type="submit" class="form-control bool_btn primary_btn" value="Send your message">
+                    </div>
+                    
+                    </div>
+              
+
+                
             </form>
 
         </div>
