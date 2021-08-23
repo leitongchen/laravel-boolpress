@@ -23010,6 +23010,10 @@ form textarea {
   padding: 10px;
 }
 
+form .submit_btn input {
+  height: 45px;
+}
+
 .search_form_container {
   margin-top: 40px;
 }
@@ -23050,7 +23054,7 @@ form textarea {
   width: 100%;
 }
 
-.message_form .submit_btn_box {
+.message_form .submit_btn {
   margin-top: 25px;
 }
 

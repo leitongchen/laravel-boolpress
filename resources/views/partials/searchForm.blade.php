@@ -29,7 +29,7 @@
                 </select>
             </div>
 
-            <div class="submit_btn input-group-lg input_group col-12 col-sm-6 col-md-3">
+            <div class="submit_btn col-12 col-sm-6 col-md-3">
                 <input class="bool_btn primary_btn btn-lg block_btn" type="submit" value="Search">
             </div>
 

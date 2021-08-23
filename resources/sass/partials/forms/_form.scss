@@ -25,6 +25,13 @@ form {
         height: 400px;
         padding: $spacing/2;
     }
+    
+    .submit_btn {
+
+        input {
+            height: 45px;
+        }
+    }
 }
 
 
@@ -44,6 +51,8 @@ form {
             padding-top: 0;
             margin-bottom: $spacing;
         }
+
+       
     }
 
     .card-header {
@@ -51,6 +60,7 @@ form {
         background-color: white;
         border-bottom: 0;
     }
+ 
 
     @include xs-screen {
 
@@ -64,6 +74,8 @@ form {
 
         .submit_btn {
             margin-top: 25px;
+
+            
         }
 
         
@@ -78,7 +90,7 @@ form {
         width: 100%;
     }
 
-    .submit_btn_box {
+    .submit_btn {
         margin-top: 25px;
     }
 

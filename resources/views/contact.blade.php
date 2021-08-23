@@ -72,8 +72,8 @@
                         <input type="file" class="form-control" name="attach" id="attach">
                     </div>
 
-                    <div class="col-12 submit_btn_box">
-                        <input type="submit" class="form-control bool_btn primary_btn" value="Send your message">
+                    <div class="col-12 submit_btn">
+                        <input type="submit" class="bool_btn primary_btn btn-lg block_btn" value="Send your message">
                     </div>
                     
                     </div>
