@@ -22968,6 +22968,48 @@ p {
      object-fit: cover;
 }
 
+.alert-error {
+  background-color: #ffeeb6;
+  color: #49585f;
+}
+
+.alert {
+  border-radius: 0;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  top: 2px;
+  font-size: 0.75rem;
+}
+
+ul,
+ol {
+  margin-bottom: 0;
+}
+
+form label {
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: #5C9FBF;
+  margin-bottom: 0;
+}
+
+form .form-control {
+  font-size: 0.85rem;
+}
+
+form .form-control:focus {
+  color: #49585f;
+  background-color: #fff;
+  border-color: #fade80;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #fade80;
+}
+
+form textarea {
+  height: 400px;
+  padding: 10px;
+}
+
 .search_form_container {
   margin-top: 40px;
 }
@@ -23004,28 +23046,12 @@ p {
   }
 }
 
-form .input_group .form-control {
-  font-size: 0.85rem;
+.message_form .label {
+  width: 100%;
 }
 
-form .input_group .form-control:focus {
-  color: #49585f;
-  background-color: #fff;
-  border-color: #fade80;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem #fade80;
-}
-
-form .input_group label {
-  font-weight: 900;
-  font-size: 0.85rem;
-  color: #5C9FBF;
-  margin-bottom: 0;
-}
-
-form textarea {
-  height: 400px;
-  padding: 10px;
+.message_form .submit_btn_box {
+  margin-top: 25px;
 }
 
 a {
@@ -23054,6 +23080,11 @@ a.badge {
 .primary_btn {
   background-color: #5C9FBF;
   color: white;
+}
+
+.primary_btn:hover {
+  background-color: #fade80;
+  color: #49585f;
 }
 
 .block_btn {

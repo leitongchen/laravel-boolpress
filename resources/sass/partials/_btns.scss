@@ -32,6 +32,11 @@ a.badge {
 .primary_btn {
     background-color: $primary_color;
     color: white;
+
+    &:hover {
+        background-color: $secondary_color;
+        color: $text_color_dark;
+    }
 }
 
 .block_btn {

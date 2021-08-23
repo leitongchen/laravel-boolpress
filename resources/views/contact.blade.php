@@ -11,7 +11,7 @@
             </div>
 
             @if ($errors->any())
-                <div class="alert alert-danger">
+                <div class="alert alert-error">
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -31,7 +31,7 @@
                         </label>
                         <input type="text" class="form-control" name="name" id="name" class="@error('name') is-invalid @enderror">
                         @error('name')
-                            <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="alert alert-error">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -40,8 +40,8 @@
                             Surname
                         </label>
                         <input type="text" class="form-control" name="surname" id="surname">
-                        @error('name')
-                            <div class="alert alert-danger">{{ $message }} </div>
+                        @error('surname')
+                            <div class="alert alert-error">{{ $message }} </div>
                         @enderror
                     </div>
 
@@ -50,8 +50,8 @@
                             Email
                         </label>
                         <input type="email" class="form-control" name="email" id="email">
-                        @error('name')
-                            <div class="alert alert-danger">{{ $message }} </div>
+                        @error('email')
+                            <div class="alert alert-error">{{ $message }} </div>
                         @enderror
                     </div>
 
@@ -60,8 +60,8 @@
                             Your message
                         </label>
                         <textarea name="message" class="form-control" id="message" cols="30" rows="6"></textarea>
-                        @error('name')
-                            <div class="alert alert-danger">{{ $message }} </div>
+                        @error('message')
+                            <div class="alert alert-error">{{ $message }} </div>
                         @enderror
                     </div>
 
